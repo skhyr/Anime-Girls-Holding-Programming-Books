@@ -28,7 +28,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
   paths.forEach(({ relativePath }) => {
     createPage({
-      path: relativePath,
+      path: encodeURIComponent(relativePath),
       component: pageTemplate,
       context: {
         name: relativePath,
