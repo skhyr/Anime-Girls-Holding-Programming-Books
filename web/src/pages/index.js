@@ -9,10 +9,11 @@ import { tallyImages } from "../utility"
 const IndexPage = ({ data }) => {
   console.log(data)
   const images = tallyImages(data)
+	const allImages = Object.values(images).reduce((a, b) => a.concat(b), []);
   return (
     <Layout>
       <SEO title="Home" />
-      <ImageViewer images={images.C} />
+      <ImageViewer images={allImages} />
       {/*<h1>Hi people</h1>*/}
       {/*<p>Welcome to your new Gatsby site.</p>*/}
       {/*<p>Now go build something great.</p>*/}

@@ -20,13 +20,15 @@ const Layout = ({ children, page }) => {
       <div
         style={{
           margin: `0 auto`,
-          maxWidth: 960,
+          maxWidth: "80%",
           padding: `0px 1.0875rem 1.45rem`,
           paddingTop: 0,
         }}
       >
+        <div style={{ display: "flex", flexDirection: "row" }}>
         <Sidebar />
         <main>{children}</main>
+        </div>
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
