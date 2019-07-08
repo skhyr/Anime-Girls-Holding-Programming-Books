@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Girls-Holding-Programming-Books`,
-    description: `Girls-Holding-Programming-Books`,
-    author: `@Xetera`,
+    title: `Anime Girls Holding Programming Books`,
+    description: `A large collection of anime girls with programming books`,
+    author: `@_Xetera`,
   },
   plugins: [
     {

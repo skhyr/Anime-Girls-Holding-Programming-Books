@@ -19,7 +19,7 @@ const Layout = ({ children, page }) => {
       <Header page={page || "Programming"} />
       <div className="page-wrapper">
         <div className="horizontal-layout">
-          <Sidebar />
+          <Sidebar className="hidden-on-mobile"/>
           <main>{children}</main>
         </div>
         {/*<footer>*/}
