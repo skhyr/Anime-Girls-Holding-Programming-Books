@@ -1,0 +1,30 @@
+html,
+body {
+  margin: 0;
+}
+
+.page-wrapper {
+  margin: 0 auto;
+  padding: 0px 1.0875rem 1.45rem;
+}
+
+.horizontal-layout {
+  display: flex;
+  flex-direction: row;
+}
+
+body {
+  /*overflow-y: hidden;*/
+  font-family: "Lato", "Roboto", Samanata;
+}
+
+#___gatsby,
+#gatsby-focus-wrapper {
+  height: 100vh;
+	max-height: 100vh;
+}
+
+main {
+  overflow-y: auto;
+  width: 100%;
+}

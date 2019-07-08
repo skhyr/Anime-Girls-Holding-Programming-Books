@@ -1,4 +1,4 @@
-const { createFilePath } = require(`gatsby-source-filesystem`)
+const { createFilePath } = require(`gatsby-source-filesystem`);
 const path = require("path");
 /**
  * Implement Gatsby's Node APIs in this file.
@@ -7,32 +7,48 @@ const path = require("path");
  */
 
 exports.createPages = async ({ graphql, actions }) => {
-  const pageTemplate = path.resolve("./src/templates/ImagePage/ImagePage.js")
-  const { createPage } = actions
+  const pageTemplate = path.resolve("./src/templates/ImagePage/ImagePage.js");
+  const { createPage } = actions;
   const query = graphql(`
     query PageQuery {
-      allDirectory(filter: {
-        relativePath: {
-          ne: ""
-        },
-      }) {
+      allDirectory(filter: { relativePath: { ne: "" } }) {
         nodes {
           relativePath
         }
       }
     }
-  `)
+  `);
   const { data } = await query;
   const paths = data.allDirectory.nodes.filter(({ relativePath }) => {
-    return relativePath !== "web"
+    return relativePath !== "web";
   });
   paths.forEach(({ relativePath }) => {
     createPage({
-      path: encodeURIComponent(relativePath),
+      path: relativePath,
       component: pageTemplate,
       context: {
         name: relativePath,
-      }
-    })
+      },
+    });
   });
-}
+};
+
+// exports.onCreateWebpackConfig = ({ actions }) => {
+//   actions.setWebpackConfig({
+//     module: {
+//       rules: [
+//         {
+//           test: /\.(png|.jpe?g|gif|webp)/,
+//           use: [
+//             {
+//               loader: "file-loader",
+//               options: {
+//                 name: "[hash].[ext]",
+//               },
+//             },
+//           ],
+//         },
+//       ],
+//     },
+//   });
+// };
