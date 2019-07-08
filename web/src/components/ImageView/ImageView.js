@@ -14,7 +14,6 @@ const ImageView = ({ images }) => {
         }
         return <Image fixed={image.fixed} key={image.src} />;
       })}
-      ;
     </div>
   );
 };
