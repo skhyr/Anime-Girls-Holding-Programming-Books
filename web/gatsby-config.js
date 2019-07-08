@@ -5,6 +5,12 @@ module.exports = {
     author: `@Xetera`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [require('autoprefixer')()]
+      }
+    } ,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -12,11 +18,11 @@ module.exports = {
         name: `images`,
         path: `..`,
         ignore: [
-          "**/\.*",
+          "**/.*",
           "../**/node_modules/**",
           "**/web/**",
-          "**/README\.md",
-          "**/CONTRIBUTING\.md"
+          "**/README.md",
+          "**/CONTRIBUTING.md",
         ],
       },
     },
@@ -38,4 +44,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
