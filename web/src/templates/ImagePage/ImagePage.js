@@ -2,21 +2,24 @@ import * as React from "react";
 import ImageView from "../../components/ImageView/ImageView";
 import Layout from "../../components/Layout/Layout";
 import { graphql } from "gatsby";
+import { convertURLScheme } from "../../utility";
+import SEO from "../../components/seo";
 
 const ImagePage = ({ pageContext, data }) => {
   const { name } = pageContext;
   const {
     allFile: { edges },
   } = data;
+  const humanReadable = convertURLScheme(name);
   const images = edges.map(edge => edge.node.childImageSharp);
   return (
-    <Layout page={name}>
+    <Layout page={humanReadable}>
+      <SEO title={humanReadable} />
       <ImageView images={images} />
     </Layout>
   );
 };
 
-export default ImagePage;
 export const imagesQuery = graphql`
   query PageQuery($name: String!) {
     allFile(filter: { relativeDirectory: { eq: $name } }) {
@@ -34,3 +37,5 @@ export const imagesQuery = graphql`
     }
   }
 `;
+
+export default ImagePage;

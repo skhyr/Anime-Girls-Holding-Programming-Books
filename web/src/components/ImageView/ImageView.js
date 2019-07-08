@@ -12,7 +12,7 @@ const ImageView = ({ images }) => {
         if (isGif(image)) {
           return <img src={image} key={image} />;
         }
-        return <Image fixed={image.fixed} key={image.src} />;
+        return <Image fixed={image.fixed} key={image.src} className="image" />;
       })}
     </div>
   );

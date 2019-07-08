@@ -2,3 +2,17 @@
 	max-height: 100%;
 	padding: 10px;
 }
+.route-link {
+	color: #2c2c2c;
+	width: 100%;
+	display: inline-block;
+}
+
+.route-active {
+	background: #f7a1c0;
+}
+
+.sidebar a {
+	font-size: 18px;
+	text-decoration: none;
+}

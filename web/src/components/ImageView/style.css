@@ -1,5 +1,13 @@
 .image-view-grid {
+	justify-content: center;
 	width: 100%;
 	display: grid;
+	grid-gap: 15px;
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr) );
+}
+
+.image {
+	margin: 0 auto;
+	border-radius: 4px;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
