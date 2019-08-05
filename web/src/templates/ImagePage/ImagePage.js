@@ -13,10 +13,10 @@ const ImagePage = ({ pageContext, data }) => {
   const humanReadable = convertURLScheme(name);
   const images = edges.map(edge => edge.node.childImageSharp);
   return (
-    <Layout page={humanReadable}>
+    <>
       <SEO title={humanReadable} />
       <ImageView images={images} />
-    </Layout>
+    </>
   );
 };
 
