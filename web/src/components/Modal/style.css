@@ -1,0 +1,31 @@
+.image-modal {
+  position: relative;
+  max-height: 100vh;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.image-modal-container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 80vw;
+  max-height: 100vh;
+  align-items: center;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  user-select: none;
+  outline: none;
+}
+
+.image-modal-overlay {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+}
