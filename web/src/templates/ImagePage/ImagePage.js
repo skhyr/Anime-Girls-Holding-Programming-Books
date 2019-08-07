@@ -29,6 +29,9 @@ export const imagesQuery = graphql`
             fixed(width: 250, height: 250, quality: 100) {
               ...GatsbyImageSharpFixed_withWebp_tracedSVG
             }
+            fluid(quality: 100) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
           }
           relativePath
           relativeDirectory

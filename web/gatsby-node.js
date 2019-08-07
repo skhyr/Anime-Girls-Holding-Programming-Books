@@ -1,11 +1,4 @@
-const { createFilePath } = require(`gatsby-source-filesystem`);
 const path = require("path");
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- * 
- */
 
 exports.onCreatePage = ({ page, actions: { createPage } }) => {
   console.log(page.path)
