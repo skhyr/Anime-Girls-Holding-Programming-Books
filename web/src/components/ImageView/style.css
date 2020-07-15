@@ -11,6 +11,12 @@
   margin: 0 auto;
 }
 
+@media (min-width: 1280px) {
+  .image-grid {
+    grid-template-columns: repeat(4, 250px);
+  }
+}
+
 .image {
   cursor: pointer;
   margin: 0 auto;

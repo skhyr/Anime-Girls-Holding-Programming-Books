@@ -2,18 +2,21 @@ import React from "react";
 import { graphql, Link } from "gatsby";
 import SEO from "../components/seo";
 import ImageView from "../components/ImageView/ImageView";
-import Modal from "../components/Modal/Modal"
+import Modal from "../components/Modal/Modal";
+import ScrollBar from "react-perfect-scrollbar";
 import { tallyImages } from "../utility";
+import { PageLayout } from "../components/Layout/Layout";
 
 const IndexPage = ({ data }) => {
   const images = tallyImages(data);
   const allImages = Object.values(images).reduce((a, b) => a.concat(b), []);
-  console.log(allImages)
   return (
-    <>
-      <SEO title="Home" />
-      <ImageView images={allImages} />
-    </>
+    <ScrollBar>
+      <PageLayout>
+        <SEO title="Home" />
+        <ImageView images={allImages} />
+      </PageLayout>
+    </ScrollBar>
   );
 };
 
@@ -26,11 +29,11 @@ export const imagesQuery = graphql`
         node {
           relativeDirectory
           childImageSharp {
-            fixed(width: 250, height: 250, quality: 100) {
-              ...GatsbyImageSharpFixed_withWebp_tracedSVG
+            original {
+              src
             }
-            fluid(quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            fixed(width: 250, height: 250, quality: 90) {
+              ...GatsbyImageSharpFixed_withWebp_tracedSVG
             }
           }
         }

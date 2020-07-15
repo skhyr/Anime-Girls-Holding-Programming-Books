@@ -4,7 +4,7 @@ import { convertURLScheme } from "../../utility";
 import { graphql, useStaticQuery, Link } from "gatsby";
 import "./style.css";
 import ScrollBar from "react-perfect-scrollbar";
-
+import "react-perfect-scrollbar/dist/css/styles.css";
 const Sidebar = ({ className }) => {
   const pages = useStaticQuery(
     graphql`
@@ -18,26 +18,41 @@ const Sidebar = ({ className }) => {
     `
   );
 
+  const linkClass =
+    "route-link no-underline text-blue-800 p-2 max-w-full hover:bg-blue-400 hover:text-blue-100 rounded";
+
   return (
-    <ScrollBar>
-      <div className={["sidebar", className].join(" ")}>
-        <div className="sidebar-all-books">
-          <Link to="/" activeClassName="route-active" className="route-link">
-            All Books
-        </Link>
-        </div>
-        {pages.allDirectory.nodes.map(({ relativePath }) => (
-          <div className="full-width">
-            <Link to={`/${relativePath}`} className="route-link" activeClassName="route-active">
+    <aside className={`h-full grid gap-2 overflow-auto ${className}`}>
+      <Link to="/" activeClassName="route-active" className={linkClass}>
+        All Books
+      </Link>
+      <p className="my-2 text-gray-700 font-semibold text-sm">Languages</p>
+      <ScrollBar>
+        <div className="h-full grid gap-2 flex-auto">
+          {pages.allDirectory.nodes.map(({ relativePath }) => (
+            <Link
+              key={relativePath}
+              to={`/${relativePath}`}
+              className={linkClass}
+              activeClassName="route-active"
+            >
               {convertURLScheme(relativePath)}
             </Link>
-            <div className="sidebar-result-count" >
-              {}
-            </div>
-          </div>
-        ))}
-      </div>
-    </ScrollBar>
+          ))}
+          <p className="p-2 text-gray-700 text-sm mt-2">
+            Made by{" "}
+            <a
+              className="text-blue-400 m-0"
+              rel="external noopener noreferrer"
+              target="_blank"
+              href="https://github.com/xetera"
+            >
+              Xetera
+            </a>
+          </p>
+        </div>
+      </ScrollBar>
+    </aside>
   );
 };
 

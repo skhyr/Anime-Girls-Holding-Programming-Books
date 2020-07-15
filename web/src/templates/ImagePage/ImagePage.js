@@ -1,9 +1,10 @@
 import * as React from "react";
 import ImageView from "../../components/ImageView/ImageView";
-import Layout from "../../components/Layout/Layout";
+import { PageLayout } from "../../components/Layout/Layout";
 import { graphql } from "gatsby";
 import { convertURLScheme } from "../../utility";
 import SEO from "../../components/seo";
+import ScrollBar from "react-perfect-scrollbar";
 
 const ImagePage = ({ pageContext, data }) => {
   const { name } = pageContext;
@@ -11,12 +12,14 @@ const ImagePage = ({ pageContext, data }) => {
     allFile: { edges },
   } = data;
   const humanReadable = convertURLScheme(name);
-  const images = edges.map(edge => edge.node.childImageSharp);
+  const images = edges.map((edge) => edge.node.childImageSharp);
   return (
-    <>
-      <SEO title={humanReadable} />
-      <ImageView images={images} />
-    </>
+    <ScrollBar>
+      <PageLayout type={humanReadable}>
+        <SEO title={humanReadable} />
+        <ImageView images={images} />
+      </PageLayout>
+    </ScrollBar>
   );
 };
 
@@ -26,11 +29,11 @@ export const imagesQuery = graphql`
       edges {
         node {
           childImageSharp {
-            fixed(width: 250, height: 250, quality: 100) {
-              ...GatsbyImageSharpFixed_withWebp_tracedSVG
+            original {
+              src
             }
-            fluid(quality: 100) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            fixed(width: 250, height: 250, quality: 90) {
+              ...GatsbyImageSharpFixed_withWebp_tracedSVG
             }
           }
           relativePath
