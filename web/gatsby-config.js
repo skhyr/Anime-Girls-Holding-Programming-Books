@@ -21,6 +21,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-postcss",
+    "gatsby-plugin-netlify-cache",
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
